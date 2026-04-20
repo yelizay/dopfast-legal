@@ -1,0 +1,13 @@
+name = "dopfast-legal-site"
+compatibility_date = "2026-04-01"
+account_id = "60152c90e3ffe3d6eb7b588b05d72f54"
+workers_dev = true
+
+routes = [
+  { pattern = "legal.dopfast.com", custom_domain = true }
+]
+
+[assets]
+directory = "./"
+not_found_handling = "404-page"
+html_handling = "none"
