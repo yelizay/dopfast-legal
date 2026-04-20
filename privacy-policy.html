@@ -1,3 +1,19 @@
+<!--
+  Live privacy policy. Promoted from /drafts/ on 2026-04-20 without
+  formal external legal review — founder accepted that risk in exchange
+  for having accurate subprocessor and age disclosures live at launch.
+  Post-launch priority: retroactive legal review.
+  Revision history vs prior 2026-04-15 version:
+    - Minimum age raised from 9+ to 18+ (Anthropic Commercial Terms §2 alignment)
+    - Cloudflare disclosed as subprocessor (Worker proxy + KV storage for abuse reports)
+    - Anthropic data retention (30-day abuse-detection window) stated explicitly
+    - RevenueCat disclosed as subprocessor for subscription management
+    - Abuse-report data flow disclosed (90-day KV retention)
+    - Device identifier treatment flagged (anonymous per-install UUID)
+    - GDPR / CCPA rights section added
+    - International data transfers section added
+    - Contact email moved from support@dopfast.ai to support@solenos.com
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,49 +26,91 @@
   h1 { font-size: 1.8rem; margin-bottom: 0.3rem; color: #1B4332; }
   .date { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
   h2 { font-size: 1.15rem; color: #1B4332; margin-top: 2rem; margin-bottom: 0.5rem; }
+  h3 { font-size: 1rem; color: #1B4332; margin-top: 1.2rem; margin-bottom: 0.4rem; }
   p { margin-bottom: 1rem; }
+  ul { margin-bottom: 1rem; padding-left: 1.5rem; }
+  li { margin-bottom: 0.4rem; }
   a { color: #40916C; }
 </style>
 </head>
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="date">Effective Date: April 15, 2026</p>
+<p class="date">Effective Date: April 20, 2026</p>
 
-<p>Dopfast ("we", "our", "the app") is a digital wellbeing application developed by Solenos Yazılım Teknoloji. Your privacy is fundamental to our mission. This policy explains what data we collect, how we use it, and your rights.</p>
+<p>Dopfast ("we", "our", "the app") is a digital wellbeing application developed by Solenos Yazılım Teknoloji. Your privacy is fundamental to our mission. This policy explains what data we collect, how we use it, who processes it on our behalf, and what rights you have over it.</p>
 
-<h2>1. Data We Collect</h2>
-<p>Dopfast is designed with a privacy-first, on-device architecture. We collect as little data as possible.</p>
-<p><strong>On-Device Only (never leaves your phone):</strong> Screen time data, app usage statistics, pickup counts, Quiet Time schedules, Balance Score, streak data, and all personal metrics are processed and stored entirely on your device using Apple's DeviceActivityFramework and local storage. We never have access to this data.</p>
-<p><strong>AI Coach messages:</strong> When you use the AI Coach feature, your messages are sent to our secure server (Cloudflare Worker) which forwards them to an AI language model (Anthropic Claude) to generate responses. Messages are not stored on our servers after the response is generated. We do not use your messages to train AI models.</p>
-<p><strong>Anonymous device identifier:</strong> A randomly generated device ID is sent with AI Coach requests for rate limiting purposes only. This ID cannot be used to identify you personally.</p>
+<h2>1. Data we collect and keep on your device</h2>
+<p>Dopfast is designed with a privacy-first, on-device architecture. The following data is processed and stored entirely on your iPhone using Apple's frameworks and our local database (SwiftData, UserDefaults). It never leaves your device and we do not have access to it:</p>
+<ul>
+  <li>Screen time data, app usage statistics, pickup counts</li>
+  <li>Quiet Time sessions, schedules, and app-selection configurations</li>
+  <li>Balance Score history and growth-streak data</li>
+  <li>Growth Journal entries</li>
+  <li>Your conversation history with Dopfast Guide (the AI coach)</li>
+</ul>
 
-<h2>2. Data We Do NOT Collect</h2>
-<p>We do not collect your name, email address, phone number, location, contacts, photos, browsing history, or any other personal information. We do not use analytics SDKs, advertising trackers, or third-party data collection tools.</p>
+<h2>2. Data transmitted to third-party subprocessors</h2>
+<p>The following narrow data flows are necessary for specific features to function. Each is processed by a named subprocessor on our behalf under a contract that limits their use of your data.</p>
 
-<h2>3. Screen Time Data</h2>
-<p>Dopfast uses Apple's Screen Time APIs (FamilyControls, DeviceActivity, ManagedSettings) to monitor and manage your screen time. All screen time data is processed on your device by Apple's frameworks. This data is never transmitted to our servers or any third party.</p>
+<h3>2.1 AI Coach messages (Cloudflare + Anthropic)</h3>
+<p>When you send a message to Dopfast Guide, the following is transmitted over HTTPS:</p>
+<ul>
+  <li>The message you typed and up to the last 20 messages of the conversation, to give the model context.</li>
+  <li>A short, aggregated context line derived from on-device metrics: minutes of screen time today, pickup count, Balance Score, and time of day. No individual app names, timestamps, or contact identifiers are included.</li>
+  <li>An anonymous per-install identifier ("device ID") used only for rate limiting.</li>
+</ul>
+<p>This data flows through two subprocessors:</p>
+<ul>
+  <li><strong>Cloudflare, Inc.</strong> operates our proxy service (a Cloudflare Worker). Cloudflare processes the request in transit and does not retain the message content. See <a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>.</li>
+  <li><strong>Anthropic, PBC</strong> operates the Claude language model that generates the response. Anthropic retains API request and response data for up to 30 days for abuse detection, and does not use API data to train their models. See <a href="https://www.anthropic.com/privacy">anthropic.com/privacy</a>.</li>
+</ul>
 
-<h2>4. Subscriptions & Purchases</h2>
-<p>In-app purchases and subscriptions are processed entirely by Apple through the App Store. We do not have access to your payment information, credit card details, or Apple ID.</p>
+<h3>2.2 Safety reports (Cloudflare)</h3>
+<p>If you long-press an AI Coach response and tap "Report this response", the following is transmitted to our Cloudflare Worker and stored in Cloudflare KV storage for up to 90 days: the reported response content, an internal message identifier, your anonymous device ID, and an optional reason tag. We review these reports to improve safety and to fulfil our abuse-monitoring obligations. After 90 days the record is automatically deleted.</p>
 
-<h2>5. Data Storage & Security</h2>
-<p>All personal data is stored locally on your device using Apple's secure storage mechanisms (SwiftData, UserDefaults). AI Coach messages are transmitted via HTTPS encryption. Our Cloudflare Worker proxy does not log or store message content.</p>
+<h3>2.3 Subscription management (RevenueCat + Apple)</h3>
+<p>Premium subscriptions are processed by Apple through the App Store and managed by <strong>RevenueCat, Inc.</strong>, which synchronises subscription state across the app. RevenueCat receives limited data about purchase events, anonymous device information, and country code. We never receive your name, email address, Apple ID, or payment card details — Apple handles payment processing entirely. See <a href="https://www.revenuecat.com/privacy/">revenuecat.com/privacy</a>.</p>
 
-<h2>6. Third-Party Services</h2>
-<p>The only third-party service used is Anthropic's Claude API for the AI Coach feature. Anthropic's data handling practices can be found at <a href="https://www.anthropic.com/privacy">anthropic.com/privacy</a>. No other third-party services receive your data.</p>
+<h3>2.4 Crisis-keyword detection</h3>
+<p>Before your AI Coach message is sent over the network, the app checks the text locally against a list of crisis-indicator phrases. This check runs entirely on your device and its result does not leave your phone; it only determines whether to display crisis-support resources (hotlines) instead of calling the AI coach.</p>
 
-<h2>7. Children's Privacy</h2>
-<p>Dopfast is rated 9+ and does not knowingly collect personal information from children under 13. The app does not require account creation or personal information to function.</p>
+<h2>3. Data we do not collect</h2>
+<p>We do not collect your name, email address (unless you voluntarily email us), phone number, precise or coarse location, contacts, photos, browsing history, or any health data beyond the screen-time metrics Apple's frameworks report on-device. We do not use advertising trackers, analytics SDKs, or any third-party data-collection tools beyond the subprocessors listed in Section 2.</p>
 
-<h2>8. Your Rights</h2>
-<p>Since your data is stored on your device, you have full control over it. You can delete all app data at any time by deleting the Dopfast app from your device. There is no account to delete and no server-side data to request removal of.</p>
+<h2>4. Your anonymous device identifier</h2>
+<p>When you first launch Dopfast we generate a random UUID and store it in your device. This identifier is sent to our Cloudflare Worker with AI Coach and Safety Report requests to enforce per-device rate limits. It is not linked to your Apple ID, name, email, or any directly identifying attribute. Deleting and reinstalling the app generates a new identifier. Under the EU General Data Protection Regulation (GDPR) this identifier may still qualify as personal data; we treat it accordingly.</p>
 
-<h2>9. Changes to This Policy</h2>
-<p>We may update this policy from time to time. Changes will be posted on this page with an updated effective date.</p>
+<h2>5. Screen time data</h2>
+<p>Dopfast uses Apple's Screen Time APIs (FamilyControls, DeviceActivity, ManagedSettings) to monitor and manage app usage. All screen time data is processed on your device by Apple's frameworks and by Dopfast's two system extensions. Screen time data is never transmitted to our servers, to Anthropic, to Cloudflare, or to any other third party.</p>
 
-<h2>10. Contact</h2>
-<p>If you have questions about this privacy policy, contact us at: <a href="mailto:support@dopfast.ai">support@dopfast.ai</a></p>
+<h2>6. Data storage and security</h2>
+<p>On-device data is stored using Apple's secure storage mechanisms (SwiftData, UserDefaults, encrypted at rest by iOS). Data in transit uses TLS 1.2 or higher. Our Cloudflare Worker does not log the content of your AI Coach messages or the model's responses; it logs only the hashed device identifier, token counts, and event types ("crisis_detected", "refusal_detected", "report_submitted"). Our subprocessors (Cloudflare, Anthropic, RevenueCat) maintain SOC 2 Type II certifications for their infrastructure.</p>
+
+<h2>7. International data transfers</h2>
+<p>Our subprocessors operate globally. Your AI Coach messages may be processed in the United States (Anthropic and Cloudflare headquarters) and other regions where Cloudflare's edge network operates. Where required, we rely on Standard Contractual Clauses or equivalent mechanisms for cross-border transfer of personal data.</p>
+
+<h2>8. Children's privacy</h2>
+<p>Dopfast is intended for users who are <strong>18 years of age or older</strong>. The AI Coach is powered by Anthropic's Claude API, whose Commercial Terms of Service require end users to be at least 18. We do not knowingly collect personal data from anyone under 18. If you believe a minor has used the app, please contact us and we will delete any associated data.</p>
+
+<h2>9. Your rights</h2>
+<p>Because nearly all your data is stored on your device, you have direct control over it through the app and through iOS itself.</p>
+<ul>
+  <li><strong>Access and view</strong> — all of your screen-time, quiet-time, balance, journal, and chat data is visible inside the app.</li>
+  <li><strong>Delete</strong> — deleting the Dopfast app from your device removes all on-device data. For the small amount of off-device data (safety reports stored in Cloudflare KV, 90-day retention; AI Coach messages held briefly by Anthropic per their 30-day abuse window), you may request early deletion by contacting us — please include your anonymous device ID (available in the app under Settings → About).</li>
+  <li><strong>Correct</strong> — edit or clear any record via the app's Settings screen.</li>
+  <li><strong>GDPR rights (EU/EEA users)</strong> — you have the right of access, rectification, erasure, restriction, portability, and objection. Contact us to exercise these.</li>
+  <li><strong>CCPA rights (California users)</strong> — you have the right to know what personal information we collect, to delete it, and to opt out of "sale" (we do not sell personal information). Contact us to exercise these.</li>
+  <li><strong>Complaint</strong> — you have the right to lodge a complaint with your local data-protection authority.</li>
+</ul>
+
+<h2>10. Changes to this policy</h2>
+<p>We may update this policy from time to time. Material changes will be announced via an in-app notice and the updated policy will be posted with a new effective date. Continued use after a change signifies acceptance of the revised policy.</p>
+
+<h2>11. Contact</h2>
+<p>For privacy questions, data-subject requests, or to report a concern, contact us at: <a href="mailto:support@solenos.com">support@solenos.com</a></p>
+
+<p style="margin-top: 3rem; font-size: 0.85rem; color: #888;">Solenos Yazılım Teknoloji — dopfast.com</p>
 
 </body>
 </html>

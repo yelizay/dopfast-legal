@@ -1,3 +1,17 @@
+<!--
+  Live terms of use. Promoted from /drafts/ on 2026-04-20 without formal
+  external legal review — founder accepted that risk in exchange for
+  having accurate Acceptable-Use flow-down and 18+ age requirement live
+  at launch. Post-launch priority: retroactive legal review.
+  Revision history vs prior 2026-04-15 version:
+    - Minimum age raised from 9+ to 18+ (Anthropic Commercial Terms §2 alignment)
+    - Section 7 (Acceptable Use) expanded to flow Anthropic AUP restrictions to end users
+    - New Section 8 on prohibition of safety-system circumvention (jailbreaks, prompt injection)
+    - AI Coach disclaimer expanded; explicit "not a crisis service" language added
+    - New Section 10 on crisis resources and emergency referral
+    - New Section 15 on termination for Acceptable Use violations
+    - Contact email moved from support@dopfast.ai to support@solenos.com
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,59 +25,111 @@
   .date { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
   h2 { font-size: 1.15rem; color: #1B4332; margin-top: 2rem; margin-bottom: 0.5rem; }
   p { margin-bottom: 1rem; }
+  ul { margin-bottom: 1rem; padding-left: 1.5rem; }
+  li { margin-bottom: 0.4rem; }
   a { color: #40916C; }
+  .crisis { background: #F0FFF4; border-left: 3px solid #40916C; padding: 0.8rem 1rem; border-radius: 4px; margin-bottom: 1rem; }
 </style>
 </head>
 <body>
 
 <h1>Terms of Use</h1>
-<p class="date">Effective Date: April 15, 2026</p>
+<p class="date">Effective Date: April 20, 2026</p>
 
-<p>Welcome to Dopfast. By downloading, installing, or using the Dopfast application, you agree to these Terms of Use. Please read them carefully.</p>
+<p>Welcome to Dopfast. By downloading, installing, or using the Dopfast application, you agree to these Terms of Use. Please read them carefully. If you do not agree with any part of these terms, do not use the app.</p>
 
 <h2>1. About Dopfast</h2>
-<p>Dopfast is a digital wellbeing application that helps you build a healthier relationship with your phone through screen time tracking, dopamine fasting, and AI-powered coaching. The app is developed and operated by Solenos Yazılım Teknoloji.</p>
+<p>Dopfast is a digital wellbeing application that helps you build a healthier relationship with your phone through screen time tracking, Quiet Time sessions, and AI-powered coaching. The app is developed and operated by Solenos Yazılım Teknoloji.</p>
 
 <h2>2. Eligibility</h2>
-<p>Dopfast is available to users aged 9 and older. By using the app, you confirm that you meet this age requirement.</p>
+<p>Dopfast is available to users who are <strong>18 years of age or older</strong>. The AI Coach feature is powered by Anthropic's Claude API, whose Commercial Terms of Service require end users to be at least 18. By using the app you represent and warrant that you are 18 or older. We reserve the right to request verification and to terminate access if we learn that a user is under 18.</p>
 
-<h2>3. Account & Data</h2>
-<p>Dopfast does not require account creation. All data is stored locally on your device. You are responsible for maintaining the security of your device.</p>
+<h2>3. Account and data</h2>
+<p>Dopfast does not require account creation. All personal data is stored locally on your device. You are responsible for maintaining the security of your device. For details on the limited data we transmit to third-party subprocessors, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
 
-<h2>4. Subscriptions & Payments</h2>
+<h2>4. Subscriptions and payments</h2>
 <p>Dopfast offers optional premium features through in-app purchases:</p>
-<p><strong>Monthly subscription:</strong> $4.99/month, billed monthly through the App Store. Auto-renews unless cancelled at least 24 hours before the end of the current billing period.</p>
-<p><strong>Yearly subscription:</strong> $39.99/year, billed annually through the App Store. Includes a 3-day free trial for new subscribers. Auto-renews unless cancelled at least 24 hours before the end of the current billing period.</p>
-<p><strong>Lifetime purchase:</strong> $79.99 one-time payment for permanent access to all premium features.</p>
-<p>All payments are processed by Apple. You can manage or cancel subscriptions in your device's Settings > Apple ID > Subscriptions. Refund requests must be directed to Apple as per their refund policy.</p>
+<ul>
+  <li><strong>Monthly subscription:</strong> $4.99/month, billed monthly through the App Store. Auto-renews unless cancelled at least 24 hours before the end of the current billing period.</li>
+  <li><strong>Yearly subscription:</strong> $39.99/year, billed annually through the App Store. Includes a 3-day free trial for new subscribers. Auto-renews unless cancelled at least 24 hours before the end of the current billing period.</li>
+  <li><strong>Lifetime purchase:</strong> $79.99 one-time payment for permanent access to all premium features.</li>
+</ul>
+<p>All payments are processed by Apple. Subscription state is synchronised through RevenueCat. You can manage or cancel subscriptions in your device's Settings → Apple ID → Subscriptions. Refund requests must be directed to Apple per their refund policy.</p>
 
-<h2>5. AI Coach</h2>
-<p>The AI Coach feature provides general wellness suggestions and motivational guidance. It is not a substitute for professional medical, psychological, or therapeutic advice. If you are experiencing mental health issues, please consult a qualified healthcare professional.</p>
-<p>AI Coach responses are generated by an artificial intelligence model and may occasionally provide inaccurate or incomplete information. Use your own judgment when following any suggestions.</p>
+<h2>5. AI Coach — what it is and what it is not</h2>
+<p>Dopfast Guide (the "AI Coach") provides general wellness suggestions and gentle motivational guidance. It is generated by an artificial intelligence model (Anthropic Claude) and may occasionally produce inaccurate, incomplete, or inappropriate responses. Use your own judgement when acting on any suggestion.</p>
+<p>The AI Coach is <strong>not</strong>:</p>
+<ul>
+  <li>A substitute for professional medical, psychological, or therapeutic advice.</li>
+  <li>A licensed therapist, counsellor, or doctor, and interacting with it does not create a therapist-client or doctor-patient relationship.</li>
+  <li>A substitute for legal or financial advice.</li>
+  <li>A crisis service or emergency responder.</li>
+</ul>
+<p>If you are experiencing a mental-health crisis or medical emergency, do not rely on the AI Coach. See Section 10 for immediate crisis resources.</p>
 
-<h2>6. Screen Time Features</h2>
-<p>Dopfast uses Apple's Screen Time APIs to monitor and manage app usage. The effectiveness of app blocking and screen time tracking depends on Apple's frameworks and your device settings. Dopfast does not guarantee uninterrupted or error-free operation of these features.</p>
+<h2>6. Screen Time features</h2>
+<p>Dopfast uses Apple's Screen Time APIs (FamilyControls, DeviceActivity, ManagedSettings) to monitor and manage app usage. The effectiveness of app blocking and screen-time tracking depends on Apple's frameworks and your device settings. Dopfast does not guarantee uninterrupted or error-free operation of these features, and screen-time metrics are approximate.</p>
 
-<h2>7. Acceptable Use</h2>
-<p>You agree not to misuse Dopfast or its services, including attempting to reverse engineer the app, abuse the AI Coach feature, or use the app for any unlawful purpose.</p>
+<h2>7. Acceptable use</h2>
+<p>You agree not to use Dopfast, and specifically the AI Coach, to generate, request, or promote any content that:</p>
+<ul>
+  <li>Violates applicable law or infringes the rights of others.</li>
+  <li>Sexually exploits or endangers minors, including child sexual abuse material (CSAM).</li>
+  <li>Sexually explicit content of any kind.</li>
+  <li>Promotes violence, self-harm, suicide methods, or terrorism.</li>
+  <li>Harasses, threatens, or targets any individual or group on the basis of race, ethnicity, religion, gender, sexual orientation, disability, or any protected characteristic.</li>
+  <li>Facilitates the creation of weapons, including chemical, biological, radiological, nuclear, or cyber weapons.</li>
+  <li>Facilitates fraud, deception, or unauthorised access to computer systems.</li>
+  <li>Provides medical, legal, financial, or psychotherapy advice presented as professional guidance.</li>
+</ul>
+<p>These restrictions flow directly from Anthropic's Acceptable Use Policy, which governs our access to the Claude API, and violation may result in termination of your access and reporting to Anthropic where required.</p>
 
-<h2>8. Intellectual Property</h2>
+<h2>8. No circumvention of safety systems</h2>
+<p>You agree not to attempt to circumvent any safety feature of the app, including:</p>
+<ul>
+  <li>Prompt-injection or "jailbreak" attempts to bypass the AI Coach's persona or refusal behaviour.</li>
+  <li>Reverse engineering, decompiling, or modifying the app binary to bypass rate limits, age gates, or content filters.</li>
+  <li>Automated or scripted interaction with the AI Coach endpoint at a volume inconsistent with normal human use.</li>
+</ul>
+<p>Attempts to circumvent safety systems are a material breach of these terms and may result in immediate termination of access, forfeiture of any prepaid subscription, and reporting to Anthropic or law enforcement where appropriate.</p>
+
+<h2>9. Intellectual property</h2>
 <p>Dopfast, including its design, code, content, and branding, is the intellectual property of Solenos Yazılım Teknoloji. You may not copy, modify, distribute, or create derivative works based on the app without prior written consent.</p>
 
-<h2>9. Disclaimer of Warranties</h2>
-<p>Dopfast is provided "as is" without warranties of any kind, either express or implied. We do not warrant that the app will be error-free, uninterrupted, or that it will meet your specific requirements. Screen time data and metrics are approximate and may vary from actual usage.</p>
+<h2>10. Crisis resources</h2>
+<div class="crisis">
+<p><strong>If you are in crisis, please reach out to a trained professional immediately.</strong></p>
+<p>
+  United States — call or text <strong>988</strong> (Suicide and Crisis Lifeline)<br>
+  United Kingdom and Ireland — call <strong>116 123</strong> (Samaritans)<br>
+  Crisis Text Line (US, Canada, UK, Ireland) — text <strong>HOME</strong> to <strong>741741</strong><br>
+  Outside these regions — <a href="https://findahelpline.com">findahelpline.com</a>
+</p>
+<p>Dopfast is not a crisis service. In a life-threatening emergency, contact your local emergency services (e.g. 911 in the US, 112 in the EU, 155/112 in Turkey).</p>
+</div>
 
-<h2>10. Limitation of Liability</h2>
-<p>To the maximum extent permitted by law, Solenos Yazılım Teknoloji shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of Dopfast.</p>
+<h2>11. Disclaimer of warranties</h2>
+<p>Dopfast is provided "as is" and "as available" without warranties of any kind, either express or implied, including without limitation warranties of merchantability, fitness for a particular purpose, non-infringement, or accuracy. We do not warrant that the app will be error-free, uninterrupted, or that it will meet your specific requirements.</p>
 
-<h2>11. Changes to These Terms</h2>
-<p>We reserve the right to update these terms at any time. Continued use of the app after changes constitutes acceptance of the updated terms.</p>
+<h2>12. Limitation of liability</h2>
+<p>To the maximum extent permitted by law, Solenos Yazılım Teknoloji shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use Dopfast, including without limitation damages resulting from reliance on AI Coach output. Our total aggregate liability to you for any claim arising out of these terms shall not exceed the amount you paid us for the app in the twelve months preceding the claim.</p>
 
-<h2>12. Governing Law</h2>
-<p>These terms are governed by the laws of the Republic of Turkey.</p>
+<h2>13. Indemnification</h2>
+<p>You agree to indemnify and hold harmless Solenos Yazılım Teknoloji and its officers, employees, and subprocessors from any claims, damages, or expenses (including reasonable legal fees) arising out of your violation of these terms, your violation of applicable law, or your misuse of the AI Coach feature.</p>
 
-<h2>13. Contact</h2>
-<p>For questions about these terms, contact us at: <a href="mailto:support@dopfast.ai">support@dopfast.ai</a></p>
+<h2>14. Changes to these terms</h2>
+<p>We may update these terms from time to time. Material changes will be announced via an in-app notice and the updated terms will be posted with a new effective date. Continued use of the app after a change constitutes acceptance of the revised terms.</p>
+
+<h2>15. Termination</h2>
+<p>We reserve the right to suspend or terminate your access to the AI Coach or to the app, without notice and without refund of any prepaid subscription amounts, if we determine in good faith that you have violated Sections 7 ("Acceptable use") or 8 ("No circumvention of safety systems"), or that continued access presents a risk to other users or to our subprocessors.</p>
+
+<h2>16. Governing law and jurisdiction</h2>
+<p>These terms are governed by the laws of the Republic of Turkey, without regard to its conflict-of-laws rules. You agree that the courts of Istanbul, Turkey shall have exclusive jurisdiction over any dispute arising from these terms, except that nothing in these terms deprives consumers of the protection of mandatory consumer-protection rules in their place of residence.</p>
+
+<h2>17. Contact</h2>
+<p>For questions about these terms, contact us at: <a href="mailto:support@solenos.com">support@solenos.com</a></p>
+
+<p style="margin-top: 3rem; font-size: 0.85rem; color: #888;">Solenos Yazılım Teknoloji — dopfast.com</p>
 
 </body>
 </html>
